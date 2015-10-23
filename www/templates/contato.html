@@ -1,5 +1,32 @@
 <ion-view view-title="Contato">
-  <ion-content>
-   <div id="mapa">ww</div>
-  </ion-content>
+<ion-content>
+    <div class="row">
+        <div class="col">
+            <h4 class="title">Endereço</h4>
+        </div>
+    </div>
+    <div id="mapa">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2441.62206039093!2d-43.17465488296176!3d-22.904381767558217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f5fedbad317%3A0xf9102ddeee4dfe08!2sEscrit%C3%B3rio+de+Advocacia+Soares+de+Andrade!5e0!3m2!1spt-BR!2sbr!4v1445477932607" width="{{mapa_width}}" height="{{mapa_height}}" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Av. Erasmo Braga  , 299  , Gr 604</p>
+            <p>Centro - Rio de Janeiro / RJ</p>
+            <p>CEP: 20020-000</p>
+            <div class="row">
+                <div class="col col-50" style="text-align: center">
+                    <a class="button icon-left ion-android-call button-dark button-small button-outline" ng-href="tel:{{telefone1}}">{{telefone1}}</a>
+                </div>
+                <div class="col col-50" style="text-align:center">
+                    <a class="button icon-left ion-android-call button-dark button-small button-outline" ng-href="tel:{{telefone2}}">{{telefone2}}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col" style="text-align: center">
+                    <a class="button icon-left ion-ios-email button-dark button-outline" href="#" ng-click="send()">jpinto@soaresdeandrade.com.br</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>
 </ion-view>

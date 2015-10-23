@@ -5,10 +5,12 @@
         Soares de Andrade Advogados
     </description>
   <author email="andrade.igor@gmail.com" href="http://ionicframework.com/">
-      Ionic Framework Team
+     Igor Andrade
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <access origin="tel:*" launch-external="yes" />
+  <allow-intent href="tel:*" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>

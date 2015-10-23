@@ -48,6 +48,14 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
         }
       }
     })
+  .state('app.fundadora', {
+      url: '/fundadora',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/fundadora.html'
+        }
+      }
+    })
   .state('app.contato', {
       url: '/contato',
       views: {

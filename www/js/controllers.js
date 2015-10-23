@@ -8,7 +8,7 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-
+/**
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -39,6 +39,7 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+  */
 })
 
 .controller('PlaylistsCtrl', function($scope) {
@@ -52,8 +53,18 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('ContatoCtrl', function($scope,$cordovaEmailComposer) {
-            var email = cfg.email.contato;
+.controller('ContatoCtrl', function($scope,$cordovaEmailComposer, $window, $ionicLoading) {
+    $scope.mapa_width = $window.innerWidth ;
+    $scope.mapa_height = $window.innerHeight*0.4;
+    $scope.telefone1 = cfg.telefones.contato1;
+    $scope.telefone2 = cfg.telefones.contato2;
+    var email = cfg.email.contato;
+    $scope.send = function() {
+        $cordovaEmailComposer.open(email).then(null, function () {
+                                                  //cancelar
+        });
+    };
+            /**
             $cordovaEmailComposer.isAvailable().then(function() {
                   jQuery("#mapa").html(cfg.email.contato.sendto);
                                                      
@@ -64,6 +75,7 @@ angular.module('starter.controllers', [])
             
             
             $cordovaEmailComposer.open(email).then(null, function () {
-                                                   jQuery("#mapa").html("cancelou");
+                                                  //cancelar
                                                    });
+                                                   */
 });
