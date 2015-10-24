@@ -8,8 +8,8 @@
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
-      <ion-nav-buttons side="right">
-       <img ng-src="img/icon.png" id="logotop" >
+      <ion-nav-buttons side="right" id="btnlogotop" >
+       <img ng-src="img/icon.png" id="logotop" ng-show="showLogo" >
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>

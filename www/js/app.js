@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$rootScope) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,6 +19,13 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    $rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState, fromParams){
+        var pg = toState.name;
+        if(pg != "app.home"){
+            $rootScope.showLogo = true;
+        }else
+        $rootScope.showLogo = false;
+    });
   });
 })
 
@@ -31,7 +38,6 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
-
   .state('app.home', {
       url: '/home',
       views: {
