@@ -1,0 +1,12 @@
+<ion-view view-title="Fotos">
+    <ion-content>
+        <div class="list card" ng-repeat="foto in fotos">
+            <div class="item item-avatar">
+                <h2>{{foto.titulo}}</h2>
+             </div>
+            <div class="item item-image">
+                <img image-lazy-src="{{foto.img}}" image-lazy-loader="android" image-lazy-distance-from-bottom-to-load="-200">
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

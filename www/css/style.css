@@ -11,3 +11,11 @@
     text-align:justify;
     padding:5px;
 } 
+
+.menu-left{
+    background-color:rgba(128, 128, 128, 0.14);
+}
+.menu-left a{
+    background-color:#b2b2b2 !important;
+    color:white;
+}
