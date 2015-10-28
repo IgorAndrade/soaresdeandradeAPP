@@ -17,7 +17,8 @@ var cfg = {
         {titulo:"Presidente da OAB/RJ dr",img:"img/fotos/foto3.jpg"},
         {titulo:"Dr. Felipe Santa Cruz, Preside ...",img:"img/fotos/foto4.jpg"},
         {titulo:"Evento na OAB/RJ",img:"img/fotos/foto5.jpg"},
-        {titulo:"Os melhores do ano",img:"img/fotos/foto6.jpg"}
+        {titulo:"Os melhores do ano",img:"img/fotos/foto7.jpg"},
+        {titulo:"Destaque",img:"img/fotos/foto6.jpg"}
     ]
     
     
