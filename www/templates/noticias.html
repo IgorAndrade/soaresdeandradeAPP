@@ -1,0 +1,31 @@
+<ion-view  cache-view="false" view-title="Notícias">
+  <ion-content>
+    <ion-refresher
+      pulling-text="Puxe para atualizar..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="list card" ng-repeat="item in items">
+
+      <div class="item">
+      <!--  <img src="avatar.jpg"> -->
+        <h2>{{item.titulo}}</h2>
+        <p>{{item.data | date:'dd/MM/yyyy'}}</p>
+      </div>
+<!--
+      <div class="item item-image">
+        <img src="cover.jpg">
+      </div>
+-->
+      <span class="item item-icon-left" href="#">
+        {{item.texto}}
+      </span>
+
+    </div>
+
+
+    <ion-infinite-scroll
+      on-infinite="loadMore()"
+      distance="1%" ng-if="hasMore">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

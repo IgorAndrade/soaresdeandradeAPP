@@ -1,74 +1,60 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout,$ionicHistory) {
-    var pg = $ionicHistory.currentView();
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-/**
-  // Form data for the login modal
-  $scope.loginData = {};
+  .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicHistory) {
+  })
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+  .controller('FotosCtrl', function ($scope) {
+    $scope.fotos = cfg.fotos;
+  })
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
-  */
-})
-
-.controller('FotosCtrl', function($scope) {
-  $scope.fotos = cfg.fotos;
-})
-
-.controller('ContatoCtrl', function($scope,$cordovaEmailComposer, $window, $ionicLoading) {
-    $scope.mapa_width = $window.innerWidth ;
-    $scope.mapa_height = $window.innerHeight*0.4;
+  .controller('ContatoCtrl', function ($scope, $cordovaEmailComposer, $window, $ionicLoading) {
+    $scope.mapa_width = $window.innerWidth;
+    $scope.mapa_height = $window.innerHeight * 0.4;
     $scope.telefone1 = cfg.telefones.contato1;
     $scope.telefone2 = cfg.telefones.contato2;
     var email = cfg.email.contato;
-    $scope.send = function() {
-        $cordovaEmailComposer.open(email).then(null, function () {
-                                                  //cancelar
-        });
+    $scope.send = function () {
+      $cordovaEmailComposer.open(email).then(null, function () {
+        //cancelar
+      });
     };
-            /**
-            $cordovaEmailComposer.isAvailable().then(function() {
-                  jQuery("#mapa").html(cfg.email.contato.sendto);
-                                                     
-                                                     }, function () {
-                  jQuery("#mapa").html("not available");
-                                                     // not available
-                                                     });
-            
-            
-            $cordovaEmailComposer.open(email).then(null, function () {
-                                                  //cancelar
-                                                   });
-                                                   */
-});
+
+  })
+
+  .controller('noticiasCtrl', function ($scope, Restangular) {
+      $scope.items = [];
+      $scope.hasMore = true;
+      $scope.qtd = 0;
+      //loadMore();
+
+      $scope.loadMore = loadMore;
+      $scope.doRefresh = doRefresh;
+      function loadMore() {
+        var q = {
+          pg: $scope.qtd,
+          qtd: 3,
+          sort: {data: 'desc'}
+        };
+        Restangular.all("/noticia").getList(q).then(
+          function (result) {
+            $scope.items = $scope.items.concat(result);
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+            $scope.qtd += result.length;
+            $scope.hasMore = (result.length > 0 && $scope.items.length <= 50);
+          }, function () {
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+            $scope.hasMore = false;
+          });
+
+      }
+
+      function doRefresh() {
+        $scope.items = [];
+        $scope.hasMore = true;
+        $scope.qtd = 0;
+        $scope.$broadcast('scroll.refreshComplete');
+      }
+    }
+  )
+
+;
